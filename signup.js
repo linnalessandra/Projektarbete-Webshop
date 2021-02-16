@@ -79,14 +79,29 @@ signupButton.addEventListener("click", async () =>{
     }else if(newUser.address != ""){
         addressInput.classList.remove("warning")
     }
-    console.log(newUser)
-    let body = new FormData()
-    body.append("newUser", JSON.stringify(newUser))
-
-    let result = await makeRequest("./api/recievers/signupReciever.php", "POST", body)
-    console.log(result)
-    emptyInput()
+    let isEmailTrue = checkIfValidEmail(emailInput)
+    if(isEmailTrue){
+        console.log(newUser)
+        let body = new FormData()
+        body.append("newUser", JSON.stringify(newUser))
+    
+        let result = await makeRequest("./api/recievers/signupReciever.php", "POST", body)
+        console.log(result)
+        emptyInput()
+    }else{
+        alert("Not a valid email!");
+    }
 })
+function checkIfValidEmail(emailInput){
+    let format = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if(emailInput.value.match(format)){
+        return true;
+    }else{
+        return false;
+    }
+
+
+}
 
 function emptyInput(){
     document.getElementById("email").value = "";

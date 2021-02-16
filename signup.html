@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="signup.js" defer></script>
+    <link rel="stylesheet" href="./style/signup.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="signup.js" defer></script>
-    <link rel="stylesheet" href="./style/signup.css">
-    <title>Sign up</title>
+    <title>TechAway</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./style/index.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
 <!-- all styling är bara en tillfällig lösning -->
-<body style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+<body>
+    <nav class="navigation-bar">
+        <img class="logo" src="./startLogo.png">
+        <a href="#"><i class="fas fa-shopping-cart"></i> Kundvagn</a>
+        <a href="#"><i class="fa fa-fw fa-envelope"></i> Kontakt</a>
+        <a href="#"><i class="fa fa-fw fa-user"></i> Logga in</a> 
+      </nav>
     <div class="signupForm" style="display: flex; flex-direction: column; width: auto;
     height: auto; border: 1px solid black; padding: 20px; justify-content: center;
     align-items: center;">
+     
         <label for="">Write your email:</label>
         <input style="margin: 5px;" type="text" name="email" id="email" placeholder="Email...">
         <label for="">Create a password:</label>

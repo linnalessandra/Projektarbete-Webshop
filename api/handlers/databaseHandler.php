@@ -5,7 +5,7 @@ class Database{
         $user = "root";
         $pwd = "";
         $this->db = new PDO("$dns", $user, $pwd);
-        $this->db->exec("set names utf 8");
+        $this->db->exec("set names utf8");
     }
     public $db;
     private function prepareQuery($query){

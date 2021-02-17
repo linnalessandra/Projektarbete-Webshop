@@ -1,0 +1,21 @@
+.mainContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.addProductWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+input{
+    margin: 5px;
+}
+textarea{
+    margin: 5px;
+    max-width: 164px;
+}
+#imageFile{
+    max-width: 164px;
+}

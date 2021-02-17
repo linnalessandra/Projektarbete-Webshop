@@ -3,8 +3,8 @@ class Database{
     function __construct(){
         $dns ="mysql:host=localhost;dbname=techaway";
         $user = "root";
-        $pwd = "";
-        $this->db = new PDO("$dns", $user, $pwd);
+        $pwd = "root";
+        $this->db = new PDO($dns, $user, $pwd);
         $this->db->exec("set names utf8");
     }
     public $db;

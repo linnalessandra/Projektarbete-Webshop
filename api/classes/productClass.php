@@ -18,7 +18,15 @@ class Product{
     }
     public function removeProduct($productToRemove){
         /* skicka in en lista med nyckeln product där ex id eller namn är medskickat! */
-        $resultFromDb = $this->db->editDatabase("DELETE FROM `product` WHERE `productName` = :product;", $productToRemove);
+        $resultFromDb = $this->db->editDatabase("DELETE FROM `product` WHERE `productName` = :productName;", $productToRemove);
+        return $resultFromDb;
+    }public function getProductById($inputID){
+        $inputID = intval($inputID);
+        $resultFromDb = $this->db->collectFromDatabase("SELECT * FROM `product` WHERE `productID` = $inputID;");
+        return $resultFromDb;
+    }
+    public function updateProduct($productToUpdate){
+        $resultFromDb = $this->db->editDatabase("UPDATE `product` SET `productName` = :productName, `productPrice` = :productPrice, `productDescription` = :productDescription, `manufacturer` = :manufacturer, `unitsInStock` = :unitsInStock WHERE `product`.`productID` = :productID;", $productToUpdate);
         return $resultFromDb;
     }
 }

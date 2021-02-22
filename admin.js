@@ -18,9 +18,8 @@ async function saveNewProduct(){
     let response = await makeRequest("./api/recievers/productReciever.php", "POST", body)
     console.log(response)
     saveImageInFolder()
+    startOver()
 }
-
-
 async function saveImageInFolder(){
     let inputImage = document.getElementById("imageFile")
     let body = new FormData()

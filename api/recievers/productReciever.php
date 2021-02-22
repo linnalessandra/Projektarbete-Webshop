@@ -28,7 +28,23 @@ try {
                 // Spara bild            
                 echo json_encode(addProductImage($_FILES["image"]));
                 exit;
-            } 
+            } if($_POST["endpoint"] == "searchproduct") {
+               /* sök fram produkt mha produktID */ 
+               $inputID = json_decode($_POST["inputID"]);
+               $product = new Product();        
+                echo json_encode($product->getProductById($inputID));
+                exit;
+            } if($_POST["endpoint"] == "updateProduct") {
+                $productToUpdate = json_decode($_POST["productToUpdate"], true);
+                $product = new Product();        
+                 echo json_encode($product->updateProduct($productToUpdate));
+                 exit;
+             }if($_POST["endpoint"] == "deleteProduct") {
+                $productToDelete = json_decode($_POST["productToDelete"], true);
+                $product = new Product();        
+                 echo json_encode($product->removeProduct($productToDelete));
+                 exit;
+             }
         }
     }
 

@@ -44,6 +44,11 @@ try {
                 $product = new Product();        
                  echo json_encode($product->removeProduct($productToDelete));
                  exit;
+             }if($_POST["endpoint"] == "getProductByCategory"){
+                 $categoryID = json_decode($_POST["categoryID"]);
+                 $product = new Product();
+                echo json_encode($product->getProductByCategory($categoryID));
+                exit;
              }
         }
     }

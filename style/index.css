@@ -110,3 +110,15 @@ body {
 p {
   font-size: 12px;
 }
+
+.imageHolder {
+height: 100px;
+width: 100px;
+}
+
+img {
+  height: inherit;
+  width: 100%;
+  object-fit: contain;
+
+}

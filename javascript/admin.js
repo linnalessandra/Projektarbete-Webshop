@@ -1,3 +1,4 @@
+window.addEventListener("load", getCustomersForNewsletter)
 let saveButton = document.getElementById("saveBtn").addEventListener("click", saveNewProduct);
 let searchButton = document.getElementById("searchBtn").addEventListener("click", searchProduct);
 async function saveNewProduct(){
@@ -100,9 +101,34 @@ async function deleteProduct(){
     console.log(response)
     startOver()
 }
+async function getCustomersForNewsletter(){
+    let divHolder = document.getElementById("listNewsletter")
+    let body = new FormData()
+    body.append("endpoint", "getNewsletterCustomers")
+    let response = await makeRequest("./api/recievers/signupReciever.php", "POST", body)
+    let table = document.createElement("table")
+    let rubrikerna = document.createElement("tr")
+    let headers = Object.keys(response[0])
+    headers = headers.slice(1, 3)
+    headers.forEach((header) =>{
+        let headerElement = document.createElement("th")
+        headerElement.innerText = header 
+        rubrikerna.appendChild(headerElement)
+    })
+    table.appendChild(rubrikerna)
+    response.forEach((signup) =>{
+        let signupRow = document.createElement("tr")
+        headers.forEach((header) =>{
+            let content = document.createElement("td")
+            content.innerText = signup[header]
+            signupRow.appendChild(content)
+        })
+        table.appendChild(signupRow)
+    })
+    divHolder.appendChild(table)
+}
 function startOver(){
-    location.reload()
-    
+    location.reload()  
 }
 async function makeRequest(url, inputMethod, body){
     try{

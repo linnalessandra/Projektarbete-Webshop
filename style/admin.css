@@ -30,4 +30,28 @@ table, th, td{
 }
 table{
     width: 100%;
+    margin-bottom: 100px;
+    height: 100%;
+}
+#hide{
+    margin-top: 10px;
+    margin-bottom: 2em;
+}
+#productToEdit{
+    margin-bottom: 4em;
+}
+.forTables{
+    text-align: center;
+    /* overflow-x: auto; */
+    margin: 30px;
+}
+@media screen and (max-width: 630px){
+    #listNewsletter{
+        overflow-x: auto;
+    }
+    #orders{
+        overflow-x: auto;
+    }
+    
+      
 }

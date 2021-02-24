@@ -4,6 +4,10 @@ class Order{
         include_once("../handlers/databaseHandler.php");
         $this->db = new Database();
     }
+    public function getOrdersFromDb(){
+        $result = $this->db->collectFromDatabase("SELECT * FROM `order`;");
+        return $result;
+    }
     /* Skicka in lista på det som ligger i cart obs tänk på att alla "nycklar" 
     heter som i databasen så blir det enklare för oss, kolla att det är en array som skickas in först!! 
     */

@@ -29,4 +29,17 @@ class Product{
         $resultFromDb = $this->db->editDatabase("UPDATE `product` SET `productName` = :productName, `productPrice` = :productPrice, `productDescription` = :productDescription, `manufacturer` = :manufacturer, `unitsInStock` = :unitsInStock WHERE `product`.`productID` = :productID;", $productToUpdate);
         return $resultFromDb;
     }
+    public function getProductByCategory($categoryID){
+        $resultFromDb = $this->db->collectFromDatabase("SELECT productID FROM product_category_detail WHERE categoryID = '$categoryID';");
+        /* return $resultFromDb; */
+        $length = count($resultFromDb);
+        $arrayOfProducts = array();
+        for ($i=0; $i < $length; $i++) { 
+            $productID = $resultFromDb[$i]->productID;
+            $newResultList = $this->db->collectFromDatabase("SELECT * FROM product WHERE productID = '$productID';");
+            array_push($arrayOfProducts, $newResultList[0]);
+        }
+        /* return $newResultList; */
+        return $arrayOfProducts;  
+    }
 }

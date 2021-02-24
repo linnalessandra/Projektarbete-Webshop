@@ -1,4 +1,40 @@
 window.addEventListener("load", initSite)
+let categoryPhone = document.getElementById("phone")
+categoryPhone.addEventListener("click", async ()=>{
+    let computerDiv = document.getElementById("datorer").innerHTML = " ";
+    let body = new FormData()
+    body.append("endpoint", "getProductByCategory")
+    body.append("categoryID", 4)
+    const products = await makeRequest("./api/recievers/productReciever.php", "POST", body)
+    showProducts(products)
+})
+let categoryComputer = document.getElementById("computer")
+categoryComputer.addEventListener("click", async ()=>{
+    let computerDiv = document.getElementById("datorer").innerHTML = " ";
+    let body = new FormData()
+    body.append("endpoint", "getProductByCategory")
+    body.append("categoryID", 1)
+    const products = await makeRequest("./api/recievers/productReciever.php", "POST", body)
+    showProducts(products)
+})
+let categoryPlattor = document.getElementById("plattor")
+categoryPlattor.addEventListener("click", async ()=>{
+    let computerDiv = document.getElementById("datorer").innerHTML = " ";
+    let body = new FormData()
+    body.append("endpoint", "getProductByCategory")
+    body.append("categoryID", 2)
+    const products = await makeRequest("./api/recievers/productReciever.php", "POST", body)
+    showProducts(products)
+})
+let categorySound = document.getElementById("sound")
+categorySound.addEventListener("click", async ()=>{
+    let computerDiv = document.getElementById("datorer").innerHTML = " ";
+    let body = new FormData()
+    body.append("endpoint", "getProductByCategory")
+    body.append("categoryID", 3)
+    const products = await makeRequest("./api/recievers/productReciever.php", "POST", body)
+    showProducts(products)
+})
 
 async function initSite() {
    const products = await makeRequest("./api/recievers/productReciever.php", "GET")
@@ -14,7 +50,7 @@ async function displayProducts() {
 }
 
 function showProducts(products){
-    console.log(products)
+    /* console.log(products) */
     let computerDiv = document.getElementById("datorer")
     products.forEach(product => {
     let title = document.createElement("h2")

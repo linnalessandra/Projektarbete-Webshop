@@ -14,6 +14,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $newsletter = new Newsletter();
         echo json_encode($newsletter->newsletterSignup($promptEmail, $promptName));
         exit;
+    }if($_POST["endpoint"] == "getNewsletterCustomers") {
+        $newsletter = new Newsletter();
+        echo json_encode($newsletter->getNewsletterSignupList());
+        exit;
     }
 } else{
     echo json_encode("Not a valid request method..");

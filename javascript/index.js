@@ -102,13 +102,32 @@ function showProducts(products){
 }
 
 
+async function newsletterPrompt() {
+    var promptEmail = prompt("Skriv in din email:");
+    var promptName = prompt("Skriv in ditt namn:")
+    
+    if (promptName == null || promptName == "") {
+        console.log("Avbrytet.");
+        alert("Du måste fylla i både namn och email för att kunna få nyhetsbrev.")
+    } else if (promptEmail == null || promptEmail == "") {
+        console.log("Avbrytet.");
+        alert("Du måste fylla i både namn och email för att kunna få nyhetsbrev.")
+    } else {
+        alert("Välkommen " + promptName + "! Ett brev skickas nu till din mail.")
+        console.log(promptEmail, promptName);
 
+        let body = new FormData() 
+        body.append("promptEmail", JSON.stringify(promptEmail));
+        body.append("promptName", JSON.stringify(promptName));
+        body.append("endpoint", "newsletterEndpoint");
 
-/* async function deleteAllProducts() {
+        let result = await makeRequest("./api/recievers/signupReciever.php", "POST", body);
+        console.log(result);
+        
+    
+    }
+  }
 
-    const products = await makeRequest("./api/recievers/productReciever.php", "POST")
-    console.log(products)
-} */
 
 
 

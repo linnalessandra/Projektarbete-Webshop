@@ -39,6 +39,10 @@ try{
                 /* sparar ordern i databasen */
                 echo json_encode($order->saveOrder($orderDate, $totalPrice, $totalQuantity, $shippingID, $userID));
                 exit; 
+            }if($_POST["endpoint"] == "getOrders"){
+                $order = new Order();
+                echo json_encode($order->getOrdersFromDb());
+                exit;
             }
 
 

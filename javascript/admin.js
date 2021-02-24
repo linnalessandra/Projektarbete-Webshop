@@ -1,6 +1,30 @@
-window.addEventListener("load", getCustomersForNewsletter)
+window.addEventListener("load", initiate)
+let logoutButton = document.getElementById("logout").addEventListener("click", logout)
 let saveButton = document.getElementById("saveBtn").addEventListener("click", saveNewProduct);
 let searchButton = document.getElementById("searchBtn").addEventListener("click", searchProduct);
+function initiate(){
+    getCustomersForNewsletter()
+    getOrders()
+    checkIfAdmin()
+}
+async function checkIfAdmin(){
+    //Här vill vi kolla så att det är en admin annars kasta tillbaka till index.html, skapa header i php??
+    /* let body = new FormData()
+    body.append("endpoint", "checkIfAdmin")
+    let response = await makeRequest("????", "POST", body)
+    console.log(response)
+    if(response == false){
+        location.replace("")
+    } */
+}
+async function logout(){
+    //vill skicka till en endpoint i reciever där vi kör destroy session
+    console.log("loggar ut")
+    /* let body = new FormData()
+    body.append("endpoint", "logout")
+    let response = await makeRequest("????", "POST", body)
+    console.log(response) */
+}
 async function saveNewProduct(){
     let inputImage = document.getElementById("imageFile").value
     inputImage = inputImage.replace(/.*[\/\\]/, '')
@@ -32,11 +56,15 @@ async function saveImageInFolder(){
 async function searchProduct(){
     let hideThis = document.getElementById("hide")
     let inputID = document.getElementById("inputID").value
+    let productToEditDiv = document.getElementById("productToEdit")
     let body = new FormData()
     body.append("inputID", JSON.stringify(inputID))
     body.append("endpoint", "searchproduct")
     let result = await makeRequest("./api/recievers/productReciever.php", "POST", body)
-    let productToEditDiv = document.getElementById("productToEdit")
+    if(result.length == 0){
+        productToEditDiv.innerText = "No product with that ID exists.."
+        return
+    }
     productToEditDiv.classList.add("addProductWrapper")
     let labelName = document.createElement("label")
     labelName.innerText = "Product name:"
@@ -106,6 +134,10 @@ async function getCustomersForNewsletter(){
     let body = new FormData()
     body.append("endpoint", "getNewsletterCustomers")
     let response = await makeRequest("./api/recievers/signupReciever.php", "POST", body)
+    if(response.length == 0){
+        divHolder.innerText = "No signups.."
+        return
+    }
     let table = document.createElement("table")
     let rubrikerna = document.createElement("tr")
     let headers = Object.keys(response[0])
@@ -126,6 +158,36 @@ async function getCustomersForNewsletter(){
         table.appendChild(signupRow)
     })
     divHolder.appendChild(table)
+}
+async function getOrders(){
+    let orderHolder = document.getElementById("orders")
+    let body = new FormData()
+    body.append("endpoint", "getOrders")
+    let response = await makeRequest("./api/recievers/orderReciever.php", "POST", body)
+    if(response.length == 0){
+        orderHolder.innerText = "No orders.."
+        return
+    }
+    let table = document.createElement("table")
+    let rubrikerna = document.createElement("tr")
+    let headers = Object.keys(response[0])
+    /* headers = headers.slice(1, 3) */
+    headers.forEach((header) =>{
+        let headerElement = document.createElement("th")
+        headerElement.innerText = header 
+        rubrikerna.appendChild(headerElement)
+    })
+    table.appendChild(rubrikerna)
+    response.forEach((signup) =>{
+        let signupRow = document.createElement("tr")
+        headers.forEach((header) =>{
+            let content = document.createElement("td")
+            content.innerText = signup[header]
+            signupRow.appendChild(content)
+        })
+        table.appendChild(signupRow)
+    })
+    orderHolder.appendChild(table)
 }
 function startOver(){
     location.reload()  

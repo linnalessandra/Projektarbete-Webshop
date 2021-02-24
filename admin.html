@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
-    <link rel="stylesheet" href="./style/admin.css">
-    <script src="./javascript/admin.js" defer></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechAway</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./style/index.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="./style/admin.css">
+<script src="./javascript/admin.js" defer></script>
+
 </head>
+
+
 <body>
+
+  <nav class="navigation-bar">
+    <div>
+        <a href="./index.html"> <img class="logo" src="./otherImages/startLogo.png"> </a>
+    </div>
+    <div class="hello">
+        <a id="logout" href="#"><i class="fa fa-fw fa-user"></i> Logga ut</a> 
+     </div>
+  </nav>
+
+
     <div class="mainContainer">
         <div class="addProductWrapper">
             <h3>Add new product to database:</h3>
@@ -34,8 +56,13 @@
             <button id="searchBtn">Search</button>
         </div>
         <div id="productToEdit"></div>
+        
+    </div>
+    <div class="forTables">
         <h3>Customers signed up for newsletter:</h3>
         <div id="listNewsletter"></div>
+        <h3>Orders:</h3>
+        <div id="orders"></div>
 
     </div>
     

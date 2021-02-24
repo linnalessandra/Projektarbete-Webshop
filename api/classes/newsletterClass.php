@@ -7,8 +7,8 @@ class Newsletter{
     }
 
     public function newsletterSignup($promptEmail, $promptName) {
-        $quantity = [];
-        $result = $this->db->editDatabase("INSERT INTO `newsletter_signup` (`promptEmail`, `promptName`) VALUES ($promptEmail, $promptName);", $quantity);
+        $entity = [];
+        $result = $this->db->editDatabase("INSERT INTO `newsletter_signup` (`promptEmail`, `promptName`) VALUES ('$promptEmail', '$promptName');", $entity);
         return $result; 
     }
 }

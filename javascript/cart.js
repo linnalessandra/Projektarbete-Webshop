@@ -124,17 +124,17 @@ async function getShipping() {
     let label1 = document.createElement("label")
     label1.innerText = result[0].shippingName
     let shippingOne = document.createElement("input")
-    shippingOne.id = result[0].shippingName
+    shippingOne.id = result[0].shippingID
     shippingOne.type = "checkbox"
     let label2 = document.createElement("label")
     label2.innerText = result[1].shippingName
     let shippingTwo = document.createElement("input")
-    shippingTwo.id = result[1].shippingName
+    shippingTwo.id = result[1].shippingID
     shippingTwo.type = "checkbox"
     let label3 = document.createElement("label")
     label3.innerText = result[2].shippingName
     let shippingThree = document.createElement("input")
-    shippingThree.id = result[2].shippingName
+    shippingThree.id = result[2].shippingID
     shippingThree.type = "checkbox"
     shippingHolder.append(label1, shippingOne, label2, shippingTwo, label3, shippingThree)
 
@@ -146,9 +146,9 @@ async function getShipping() {
 async function endOrder() {
 
     let shippingMethod = null
-    let postnord = document.getElementById("Postnord Miljöfrakt")
-    let dhl = document.getElementById("DHL")
-    let brevduva = document.getElementById("BudBee Express")
+    let postnord = document.getElementById("1")
+    let dhl = document.getElementById("2")
+    let brevduva = document.getElementById("3")
 
     console.log("hejsan")
     if(postnord.checked && dhl.checked && brevduva.checked){
@@ -172,15 +172,12 @@ async function endOrder() {
         return
 
     }else if(postnord.checked){
-        console.log(postnord.id)
         shippingMethod = postnord.id
         
     }else if(dhl.checked){
-        console.log(dhl.id)
         shippingMethod = dhl.id
         
     }else if(brevduva.checked){
-        console.log(brevduva.id)
         shippingMethod = brevduva.id
     }
 

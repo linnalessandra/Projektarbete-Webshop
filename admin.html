@@ -33,38 +33,45 @@
 
     <div class="mainContainer">
         <div class="addProductWrapper">
-            <h3>Add new product to database:</h3>
-            <label for="">Product name:</label>
+            <h3>Lägg till en ny produkt i databasen:</h3>
+            <label for="">Produkt namn:</label>
             <input type="text" name="" id="productName">
-            <label for="">Price:</label>
+            <label for="">Pris</label>
             <input type="number" name="" id="productPrice">
-            <label for="">Manufacturer:</label>
+            <label for="">Tillverkare:</label>
             <input type="text" name="" id="manufacturer">
-            <label for="">Units in stock:</label>
+            <label for="">Antal i lager:</label>
             <input type="number" name="" id="unitsInStock">
-            <label for="">Upload an image:</label>
+            <label for="">Ladda upp en bild:</label>
             <input type="file" name="" id="imageFile">
-            <label for="">Description:</label>
+            <label for="">Produkt beskrivning:</label>
             <textarea id="productDescription" cols="30" rows="10"></textarea>
-            <button id="saveBtn">Save</button>
+            <button id="saveBtn">Spara</button>
 
         </div>
-        <h3>Edit product:</h3>
+        <h3>Ändra produkt:</h3>
         <div id="hide" class="addProductWrapper">
-            <label for="">Search product by ID:</label>
+            <label for="">Sök fram produkt via ID:</label>
             <input type="number" name="" id="inputID" placeholder="productID...">
-            <button id="searchBtn">Search</button>
+            <button id="searchBtn">Sök</button>
         </div>
         <div id="productToEdit"></div>
         
     </div>
     <div class="forTables">
-        <h3>Customers signed up for newsletter:</h3>
+        <h3>Kunder som vill ha nyhetsbrev:</h3>
         <div id="listNewsletter"></div>
-        <h3>Orders:</h3>
+        <h3>Ordrar:</h3>
         <div id="orders"></div>
 
     </div>
+    <footer class="contactFooter">
+        <div class="footerContainer">
+        </div>
+        <div class="infoFooter">
+          <img src="./otherImages/startLogo.png" alt="">
+        </div>
+      </footer>
     
 </body>
 </html>

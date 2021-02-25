@@ -101,10 +101,26 @@ function showProducts(products){
 
 }
 
+function checkIfValidEmail(promptEmail){
+    let format = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    if(promptEmail.match(format)){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 
 async function newsletterPrompt() {
     var promptEmail = prompt("Skriv in din email:");
-    var promptName = prompt("Skriv in ditt namn:")
+    var promptName = prompt("Skriv in ditt namn:");
+
+    let isEmailTrue = checkIfValidEmail(promptEmail)
+    if(!isEmailTrue){
+        alert("Not a valid email!");
+        return;
+    }  
     
     if (promptName == null || promptName == "") {
         console.log("Avbrytet.");

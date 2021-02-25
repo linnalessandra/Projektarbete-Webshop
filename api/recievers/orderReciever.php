@@ -12,14 +12,24 @@ try{
     if(isset($_SERVER["REQUEST_METHOD"])){
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             if($_POST["endpoint"] == "createOrder"){
-                session_start();
+                /* session_start();
                 $db = new Database();
                 $userLoggedIn = unserialize($_SESSION["user_loggedin"]);
                 $userLoggedIn = $userLoggedIn["email"];
-                $userMakingOrder = $db->collectFromDatabase("SELECT * FROM user WHERE email = '$userLoggedIn';");
+                $userMakingOrder = $db->collectFromDatabase("SELECT * FROM user WHERE email = '$userLoggedIn';"); */
+
+
+                /* lägger in en låtsas userID tills loggingrejerna är på plats obs ändra även i orderclass
+                där vi sparar in allt i databasen*/
+                $userID = 1;
+
+                
                 $order = new Order();
                 $productInCart = json_decode($_POST["productsToOrder"], true);
                 $shippingMethod = json_decode($_POST["shippingMethod"]);
+                $shippingMethod = intval($shippingMethod);
+                
+                
         
                 /* kör de olika funktionerna och sparar i olika variabler
                 det vi behöver när vi sparar en order i databasen, har döpt
@@ -30,14 +40,14 @@ try{
                 $totalPrice = $order->totalPrice($productInCart);
                 
                 $totalQuantity = $order->getQuantity($productInCart);
-                
-                $shippingID = $order->getShippingID($shippingMethod);
+                /* nedan behövs ej vi skickar ju in ID */
+                /* $shippingID = $order->getShippingID($shippingMethod); */
         
-                $userID = $userMakingOrder[0]->userID;
+                /* $userID = $userMakingOrder[0]->userID; */
 
                 $updatingUnitsInStock = $order->updateUnitsInStock($productInCart);
 
-                echo json_encode($order->saveOrder($orderDate, $totalPrice, $totalQuantity, $shippingID, $userID));
+                echo json_encode($order->saveOrder($orderDate, $totalPrice, $totalQuantity, $shippingMethod, $userID));
                 exit; 
             }if($_POST["endpoint"] == "getOrders"){
                 $order = new Order();

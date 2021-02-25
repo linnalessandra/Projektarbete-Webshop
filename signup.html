@@ -1,49 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="./javascript/signup.js" defer></script>
-    <link rel="stylesheet" href="./style/signup.css">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechAway</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="./style/index.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechAway</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <script src="./javascript/signup.js" defer></script>
+  <link rel="stylesheet" href="./style/signup.css">
+  <link rel="stylesheet" href="./style/index.css">
 </head>
-<!-- all styling är bara en tillfällig lösning -->
 <body>
-    <nav class="navigation-bar">
-        <img class="logo" src="./startLogo.png">
-        <a href="#"><i class="fas fa-shopping-cart"></i> Kundvagn</a>
-        <a href="#"><i class="fa fa-fw fa-envelope"></i> Kontakt</a>
+  <nav class="navigation-bar">
+    <div>
+        <a href="./index.html"> <img class="logo" src="./otherImages/startLogo.png"> </a>
+    </div>
+    <div class="hello">
+        <button onclick="newsletterPrompt()"> <i class="fas fa-envelope-open-text"></i> Nyhetsbrev</button>
+        <a href="./cart.html"><i class="fas fa-shopping-cart"></i> Kundvagn</a>
+        <a href="#contactFooter"><i class="fa fa-fw fa-envelope"></i> Kontakt</a>
         <a href="#"><i class="fa fa-fw fa-user"></i> Logga in</a> 
-      </nav>
-    <div class="signupForm" style="display: flex; flex-direction: column; width: auto;
-    height: auto; border: 1px solid black; padding: 20px; justify-content: center;
-    align-items: center;">   
-        <label for="">Write your email:</label>
+     </div>
+  </nav>
+    <div class="signupForm">   
+        <label for="">Email:</label>
         <input style="margin: 5px;" type="text" name="email" id="email" placeholder="Email...">
-        <label for="">Create a password:</label>
+        <label for="">Lösenord:</label>
         <input style="margin: 5px;" type="password" name="pwd" id="pwd" placeholder="Password...">
-        <label for="">Name:</label>
+        <label for="">Namn:</label>
         <input style="margin: 5px;" type="text" name="name" id="name" placeholder="Name...">
-        <label for="">Age:</label>
+        <label for="">Ålder:</label>
         <input style="margin: 5px;" type="number" name="age" id="age" placeholder="Age...">
-        <label for="">Country:</label>
+        <label for="">Land:</label>
         <input style="margin: 5px;" type="text" name="country" id="country" placeholder="Country...">
-        <label for="">City:</label>
+        <label for="">Stad:</label>
         <input style="margin: 5px;" type="text" name="city" id="city" placeholder="City...">
-        <label for="">Postcode:</label>
+        <label for="">Postkod:</label>
         <input style="margin: 5px;" type="number" name="postcode" id="postcode" placeholder="Postcode...">
         <label for="">Address:</label>
         <input style="margin: 5px;" type="text" name="address" id="address" placeholder="Address...">
-        <button id="signupBtn">Sign up</button>
+        <button id="signupBtn">Skapa konto</button>
     </div>
-
+    <footer class="contactFooter">
+      <div class="footerContainer">
+        <h2>Kontakta oss</h2>
+        <p>Email: info@techaway.se</p>
+        <p>Telefon: 031-337855</p>
+      </div>
+      <div class="infoFooter">
+        <img src="./otherImages/startLogo.png" alt="">
+      </div>
+    </footer>
     
 </body>
 </html>

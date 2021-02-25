@@ -40,3 +40,15 @@ body {
   h2 {
       margin-left: 20px;
   }
+
+
+.imageHolder {
+    height: 100px;
+    width: 100px;
+    }
+    
+    img {
+      height: inherit;
+      object-fit: contain;
+    
+    }

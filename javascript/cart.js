@@ -2,13 +2,8 @@ window.addEventListener("load", initSite)
 
 async function initSite() {
    const products = await makeRequest("./api/recievers/orderReciever.php", "GET")
-   console.log(products)
-}
-
-/* visa produkterna på startsidan */
-async function displayProducts() {
-    const products = await makeRequest("./api/recievers/orderReciever.php", "GET")
-    console.log(products)
+   getCartProducts();
+   updateCartTotal();
 }
 
 
@@ -18,6 +13,210 @@ async function displayProducts() {
     console.log(products)
 } 
 
+
+async function ShowProductsInCart(chosedProducts) {
+
+    let container = document.getElementById("cartProducts")
+    container.style.display = "flex"
+    container.style.justifyContent = "center"
+    container.style.flexDirection = "row"
+    container.style.flexWrap = "wrap"
+    console.log(chosedProducts)
+
+
+
+    for (let i = 0; i < chosedProducts.length; i++) {
+        const product = chosedProducts[i];
+        const productIndex = i;
+        console.log(product.product.productName);
+
+        let productCard = document.createElement("div")
+        productCard.style.display = "flex"
+        productCard.style.justifyContent = "center"
+        productCard.style.flexDirection = "column"
+        productCard.style.padding = "20px"
+
+
+
+
+
+        let productTitle = document.createElement("h2")
+        productTitle.innerText = product.product.productName;
+
+        productCard.appendChild(productTitle);
+
+
+        let imageHolder = document.createElement("div")
+        imageHolder.classList.add("imageHolder")
+        imageHolder.innerHTML = "<img src='" + "./productImages/" + product.product.imageSrc + "'>" 
+
+        productCard.appendChild(imageHolder);
+
+        let productPrice = document.createElement("h3")
+        productPrice.innerText = product.product.productPrice + " kr" 
+       
+        productCard.appendChild(productPrice);
+
+        let itemButton = document.createElement("button")
+        itemButton.style.width = "25px"
+        itemButton.dataset.productIndex = productIndex 
+ 
+        itemButton.addEventListener("click", e => {
+           chosedProducts.splice(i, 1);
+           localStorage.setItem("cart", JSON.stringify(chosedProducts));
+           location.reload();
+
+        })
+
+        productCard.appendChild(itemButton);
+
+
+        let itemIcon = document.createElement("i")
+        itemIcon.classList.add("fas", "fa-trash-alt")
+        itemButton.appendChild(itemIcon)
+
+
+        let itemSpan = document.createElement("span")
+        itemSpan.textContent = "Ta Bort"
+
+        itemButton.appendChild(itemSpan)
+
+        container.appendChild(productCard);
+        
+    }
+    
+    
+}
+
+var currentShoppingcart=JSON.parse(localStorage.getItem("cart"))
+
+function updateCartTotal(){
+    let totalPrice = document.getElementById("totalPrice")
+    totalPrice.style.display = "flex"
+    totalPrice.style.justifyContent = "center"
+
+
+    let price = 0
+    for (let i = 0; i < currentShoppingcart.length; i++) {
+        let productPrice = Number(currentShoppingcart[i].product.productPrice);
+        if(currentShoppingcart !=null){
+            price += productPrice
+
+        } else if(currentShoppingcart == 0){
+            price = 0 
+        }
+        totalPrice.innerHTML = "Totalt pris: " + price + " kr"   
+    }
+}
+
+
+async function getShipping() {
+    const result = await makeRequest("./api/recievers/orderReciever.php", "GET")
+    console.log(result)
+
+    let shippingHolder = document.getElementById("shipping")
+    shippingHolder.style.display = "flex"
+    shippingHolder.style.justifyContent = "center"
+    shippingHolder.style.flexDirection = "column"
+
+
+
+    let label1 = document.createElement("label")
+    label1.innerText = result[0].shippingName
+    let shippingOne = document.createElement("input")
+    shippingOne.id = result[0].shippingName
+    shippingOne.type = "checkbox"
+    let label2 = document.createElement("label")
+    label2.innerText = result[1].shippingName
+    let shippingTwo = document.createElement("input")
+    shippingTwo.id = result[1].shippingName
+    shippingTwo.type = "checkbox"
+    let label3 = document.createElement("label")
+    label3.innerText = result[2].shippingName
+    let shippingThree = document.createElement("input")
+    shippingThree.id = result[2].shippingName
+    shippingThree.type = "checkbox"
+    shippingHolder.append(label1, shippingOne, label2, shippingTwo, label3, shippingThree)
+
+    
+
+}
+
+
+async function endOrder() {
+
+    let shippingMethod = null
+    let postnord = document.getElementById("Postnord Miljöfrakt")
+    let dhl = document.getElementById("DHL")
+    let brevduva = document.getElementById("BudBee Express")
+
+    console.log("hejsan")
+    if(postnord.checked && dhl.checked && brevduva.checked){
+        /* console.log(postnord.id) */
+        console.log("du måste välja ett alternativ")
+        return
+    }else if(postnord.checked && dhl.checked){
+        console.log("du måste välja ett alternativ")
+        return
+        
+    }else if(dhl.checked && brevduva.checked){
+        console.log("du måste välja ett alternativ")
+        return
+        
+    }else if(postnord.checked && brevduva.checked){
+        console.log("du måste välja ett alternativ")
+        return
+
+    }else if(!postnord.checked && !brevduva.checked && !dhl.checked){
+        console.log("du måste välja ett frakt alternativ")
+        return
+
+    }else if(postnord.checked){
+        console.log(postnord.id)
+        shippingMethod = postnord.id
+        
+    }else if(dhl.checked){
+        console.log(dhl.id)
+        shippingMethod = dhl.id
+        
+    }else if(brevduva.checked){
+        console.log(brevduva.id)
+        shippingMethod = brevduva.id
+    }
+
+    let currentCart = localStorage.getItem("cart")
+    currentCart = JSON.parse(currentCart)
+    let body = new FormData()
+    body.append("productsToOrder", JSON.stringify(currentCart))
+    body.append("shippingMethod", JSON.stringify(shippingMethod))
+    body.append("endpoint", "createOrder")
+    let response = await makeRequest("./api/recievers/orderReciever.php", "POST", body)
+    console.log(response)
+}
+
+
+async function getCartProducts() {
+    
+    let chosedProducts = localStorage.getItem("cart");
+    chosedProducts = JSON.parse(chosedProducts);
+    let container = document.getElementById("cartProducts")
+
+    
+    if (chosedProducts.length == 0) {
+        console.log("hej")
+        let emptyCartTitle = document.createElement("p")
+        container.style.display = "flex"
+        container.style.justifyContent = "center"
+        emptyCartTitle.innerText = "Kundvagnen är tom..."
+        container.append(emptyCartTitle);
+        return
+        
+    } else {
+        ShowProductsInCart(chosedProducts);
+        getShipping();
+        
+    }
+}
 
 
 

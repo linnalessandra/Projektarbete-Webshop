@@ -34,9 +34,9 @@ try{
                 $shippingID = $order->getShippingID($shippingMethod);
         
                 $userID = $userMakingOrder[0]->userID;
-                /* uppdaterar lagersaldot */
+
                 $updatingUnitsInStock = $order->updateUnitsInStock($productInCart);
-                /* sparar ordern i databasen */
+
                 echo json_encode($order->saveOrder($orderDate, $totalPrice, $totalQuantity, $shippingID, $userID));
                 exit; 
             }if($_POST["endpoint"] == "getOrders"){

@@ -3,7 +3,7 @@ class Database{
     function __construct(){
         $dns ="mysql:host=localhost;dbname=techaway";
         $user = "root";
-        $pwd = "root";
+        $pwd = "";
         $this->db = new PDO($dns, $user, $pwd);
         $this->db->exec("set names utf8");
     }
@@ -14,8 +14,8 @@ class Database{
     public function editDatabase($query, $content){
         /* ta bort/spara/uppdatera i databasen */
         $preparedQuery = $this->prepareQuery($query);
-        $status = $preparedQuery->execute($content);
-        return $status;
+        $preparedQuery->execute($content);
+        return $preparedQuery->fetchAll(PDO::FETCH_ASSOC);
     }
     public function collectFromDatabase($query){
         /* hämta från databasen */

@@ -74,6 +74,7 @@ try{
     }
 
 }catch(Exception $e){
-    http_response_code($e->getCode());
-    echo json_encode(array("status"=>$e->getCode(), "Message"=>$e->getMessage()));
+    /* http_response_code($e->getCode());
+    echo json_encode(array("status"=>$e->getCode(), "Message"=>$e->getMessage())); */
+    echo json_encode("false");
 }

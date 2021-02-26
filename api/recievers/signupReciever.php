@@ -18,6 +18,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $newsletter = new Newsletter();
         echo json_encode($newsletter->getNewsletterSignupList());
         exit;
+    }if($_POST["endpoint"] == "checkIfAdmin") {
+        session_start();
+        if(isset($_SESSION["admin"])){
+            if($_SESSION["admin"] == true){
+                echo json_encode("hej admin");
+                exit;
+            }else{
+                echo json_encode(false);
+                exit;
+            }
+        }else{
+            echo json_encode(false);
+            exit;
+        }
+    }if($_POST["endpoint"] == "checkLogin") {
+        session_start();
+        if(isset($_SESSION["username"])){
+            echo json_encode(true);
+            exit;
+        }else{
+            echo json_encode(false);
+            exit;
+        }
     }
 } else{
     echo json_encode("Not a valid request method..");

@@ -1,5 +1,4 @@
 window.addEventListener("load", initiate)
-let logoutButton = document.getElementById("logout").addEventListener("click", logout)
 let saveButton = document.getElementById("saveBtn").addEventListener("click", saveNewProduct);
 let searchButton = document.getElementById("searchBtn").addEventListener("click", searchProduct);
 function initiate(){
@@ -9,21 +8,13 @@ function initiate(){
 }
 async function checkIfAdmin(){
     //Här vill vi kolla så att det är en admin annars kasta tillbaka till index.html, skapa header i php??
-    /* let body = new FormData()
+    let body = new FormData()
     body.append("endpoint", "checkIfAdmin")
-    let response = await makeRequest("????", "POST", body)
+    let response = await makeRequest("./api/recievers/signupReciever.php", "POST", body)
     console.log(response)
     if(response == false){
-        location.replace("")
-    } */
-}
-async function logout(){
-    //vill skicka till en endpoint i reciever där vi kör destroy session
-    console.log("loggar ut")
-    /* let body = new FormData()
-    body.append("endpoint", "logout")
-    let response = await makeRequest("????", "POST", body)
-    console.log(response) */
+        location.replace("http://localhost/Projektarbete-Webshop/index.html");
+    }
 }
 async function saveNewProduct(){
     let inputImage = document.getElementById("imageFile").value

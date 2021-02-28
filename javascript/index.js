@@ -1,4 +1,10 @@
 window.addEventListener("load", initSite)
+async function initSite() {
+   const products = await makeRequest("./api/recievers/productReciever.php", "GET")
+   showProducts(products)
+   checkIfLoggedIn()
+   
+}
 let categoryPhone = document.getElementById("phone")
 categoryPhone.addEventListener("click", async ()=>{
     let computerDiv = document.getElementById("datorer").innerHTML = " ";
@@ -36,11 +42,6 @@ categorySound.addEventListener("click", async ()=>{
     showProducts(products)
 })
 
-async function initSite() {
-   const products = await makeRequest("./api/recievers/productReciever.php", "GET")
-   showProducts(products)
-   
-}
 
 /* visa produkterna på startsidan */
 async function displayProducts() {
@@ -143,7 +144,19 @@ async function newsletterPrompt() {
     
     }
   }
-
+async function checkIfLoggedIn(){
+    let body = new FormData()
+    body.append("endpoint", "checkLogin")
+    let result = await makeRequest("./api/recievers/signupReciever.php", "POST", body);
+    console.log(result);
+    if(result == true){
+        let btnLogin = document.getElementById("btnLogin")
+        btnLogin.innerText = "Logga ut";
+        btnLogin.href = "./api/handlers/logout.php"
+    }else{
+        return false
+    }
+}
 
 
 

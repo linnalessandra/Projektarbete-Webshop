@@ -4,6 +4,7 @@ async function initSite() {
    const products = await makeRequest("./api/recievers/orderReciever.php", "GET")
    getCartProducts();
    updateCartTotal();
+   checkIfLoggedIn();
 }
 
 
@@ -180,7 +181,11 @@ async function endOrder() {
     }else if(brevduva.checked){
         shippingMethod = brevduva.id
     }
-
+    let checkLogin = await checkIfLoggedIn();
+    if(checkLogin == false){
+        alert("Logga in för att lägga en beställning!")
+        location.replace("http://localhost/Projektarbete-Webshop/api/handlers/login.php")
+    }
     let currentCart = localStorage.getItem("cart")
     currentCart = JSON.parse(currentCart)
     let body = new FormData()
@@ -215,7 +220,20 @@ async function getCartProducts() {
     }
 }
 
+async function checkIfLoggedIn(){
+    let body = new FormData()
+    body.append("endpoint", "checkLogin")
+    let result = await makeRequest("./api/recievers/signupReciever.php", "POST", body);
+    console.log(result);
+    if(result == true){
+        let btnLogin = document.getElementById("btnLogin")
+        btnLogin.innerText = "Logga ut";
+        btnLogin.href = "./api/handlers/logout.php"
 
+    }else{
+        return false
+    }
+}
 
 
 async function makeRequest(url, requestMethod, body) {

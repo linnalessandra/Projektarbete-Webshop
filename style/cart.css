@@ -47,8 +47,24 @@ body {
     width: 100px;
     }
     
-    img {
-      height: inherit;
-      object-fit: contain;
+img {
+    height: inherit;
+    object-fit: contain;
     
-    }
+}
+#endButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+
+}
+#endOrderButton{
+    background-color: lightgreen;
+    border-color: whitesmoke;
+    padding: 8px;
+}
+button:focus{
+    outline: whitesmoke auto 1px;
+}

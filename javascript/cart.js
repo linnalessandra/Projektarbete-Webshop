@@ -22,14 +22,13 @@ async function ShowProductsInCart(chosedProducts) {
     container.style.justifyContent = "center"
     container.style.flexDirection = "row"
     container.style.flexWrap = "wrap"
-    console.log(chosedProducts)
 
 
 
     for (let i = 0; i < chosedProducts.length; i++) {
         const product = chosedProducts[i];
         const productIndex = i;
-        console.log(product.product.productName);
+
 
         let productCard = document.createElement("div")
         productCard.style.display = "flex"
@@ -113,12 +112,19 @@ function updateCartTotal(){
 
 async function getShipping() {
     const result = await makeRequest("./api/recievers/orderReciever.php", "GET")
-    console.log(result)
+  
 
     let shippingHolder = document.getElementById("shipping")
     shippingHolder.style.display = "flex"
     shippingHolder.style.justifyContent = "center"
     shippingHolder.style.flexDirection = "column"
+    let newButton = document.createElement("button")
+    newButton.innerText = "TESTAR"
+    newButton.addEventListener("click", endOrder)
+    newButton.id = "endOrderButton"
+    let ButtonHolder = document.getElementById("endButton")
+    ButtonHolder.appendChild(newButton)
+    
 
 
 
@@ -185,6 +191,7 @@ async function endOrder() {
     if(checkLogin == false){
         alert("Logga in för att lägga en beställning!")
         location.replace("http://localhost/Projektarbete-Webshop/api/handlers/login.php")
+        return
     }
     let currentCart = localStorage.getItem("cart")
     currentCart = JSON.parse(currentCart)
@@ -193,7 +200,7 @@ async function endOrder() {
     body.append("shippingMethod", JSON.stringify(shippingMethod))
     body.append("endpoint", "createOrder")
     let response = await makeRequest("./api/recievers/orderReciever.php", "POST", body)
-    console.log(response)
+    emptyCart()
 }
 
 
@@ -205,7 +212,6 @@ async function getCartProducts() {
 
     
     if (chosedProducts.length == 0) {
-        console.log("hej")
         let emptyCartTitle = document.createElement("p")
         container.style.display = "flex"
         container.style.justifyContent = "center"
@@ -224,7 +230,6 @@ async function checkIfLoggedIn(){
     let body = new FormData()
     body.append("endpoint", "checkLogin")
     let result = await makeRequest("./api/recievers/signupReciever.php", "POST", body);
-    console.log(result);
     if(result == true){
         let btnLogin = document.getElementById("btnLogin")
         btnLogin.innerText = "Logga ut";
@@ -235,7 +240,19 @@ async function checkIfLoggedIn(){
     }
 }
 
-
+function emptyCart(){
+    console.log("töm kundvagn")
+    let container = document.getElementById("cartProducts").innerHTML = " "
+    let totalPrice = document.getElementById("totalPrice").innerHTML = " "
+    let shippingHolder = document.getElementById("shipping").innerHTML = " "
+    let ButtonHolder = document.getElementById("endButton").innerHTML = " "
+    
+    let chosedProducts = localStorage.getItem("cart");
+    JSON.parse(chosedProducts)
+    chosedProducts = [];
+    localStorage.setItem("cart", JSON.stringify(chosedProducts))
+    getCartProducts()
+}
 async function makeRequest(url, requestMethod, body) {
     try {
     const response = await fetch(url, {

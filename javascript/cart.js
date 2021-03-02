@@ -269,6 +269,7 @@ async function endOrder() {
     body.append("shippingMethod", JSON.stringify(shippingMethod))
     body.append("endpoint", "createOrder")
     let response = await makeRequest("./api/recievers/orderReciever.php", "POST", body)
+    console.log(response)
     emptyCart()
     let shipDiv = document.getElementById("shipOption")
         shipDiv.innerText = " "
@@ -305,6 +306,9 @@ async function checkIfLoggedIn(){
         let btnLogin = document.getElementById("btnLogin")
         btnLogin.innerText = "Logga ut";
         btnLogin.href = "./api/handlers/logout.php"
+        let contactBtn = document.getElementById("contact")
+        contactBtn.innerText = "Se tidigare ordrar";
+        contactBtn.href = "orders.html"
 
     }else{
         return false

@@ -8,6 +8,10 @@ class Order{
         $result = $this->db->collectFromDatabase("SELECT * FROM `order`;");
         return $result;
     }
+    public function getOrderForUser($userID){
+        $result = $this->db->collectFromDatabase("SELECT * FROM `order` WHERE `userID` = '$userID';");
+        return $result;
+    }
     /* Skicka in lista på det som ligger i cart obs tänk på att alla "nycklar" 
     heter som i databasen så blir det enklare för oss, kolla att det är en array som skickas in först!! 
     */

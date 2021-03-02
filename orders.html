@@ -11,8 +11,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
       integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
-<script defer src="./javascript/index.js" ></script>
+<!-- <link rel="stylesheet" href="./style/admin.css"> -->
+<script defer src="./javascript/orders.js" ></script>
 
 </head>
 
@@ -24,23 +24,18 @@
         <a href="./index.html"> <img class="logo" src="./otherImages/startLogo.png"> </a>
     </div>
     <div class="hello">
-        <button onclick="newsletterPrompt()"> <i class="fas fa-envelope-open-text"></i> Nyhetsbrev</button>
         <a href="./cart.html"><i class="fas fa-shopping-cart"></i> Kundvagn</a>
         <a id="contact" href="#contactFooter"><i class="fa fa-fw fa-envelope"></i> Kontakt</a>
-        <a id="btnLogin" href="./api/handlers/login.php"><i class="fa fa-fw fa-user"></i> Logga in</a> 
+        <a id="btnLogin" href="./api/handlers/logout.php"><i class="fa fa-fw fa-user"></i> Logga ut</a> 
      </div>
   </nav>
+  <div class="userOrderContainer">
+        <h3>Dina tidigare ordrar:</h3>
+        <div class="flex-row">
+            <div id="userOrders"></div>
 
-
-    <div class="vertical-menu">
-        <a href="#" id="phone">Telefoner</a>
-        <a href="#" id="computer">Datorer</a>
-        <a href="#" id="plattor">Surfplattor</a>
-        <a href="#" id="sound">Ljud</a>
-      </div>
-      
-      <div id="datorer"> </div>
-
+        </div>
+  </div>
       <footer class="contactFooter">
         <div class="footerContainer">
           <h2>Kontakta oss</h2>
@@ -55,4 +50,3 @@
 
 </body>
 </html> 
-

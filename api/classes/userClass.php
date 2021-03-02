@@ -30,4 +30,11 @@ class User{
         $resultFromDatabase = $this->db->editDatabase("UPDATE `user` SET `isAdmin` = 'admin' WHERE `user`.`userID` = '$userID';", $entity);
         return $resultFromDatabase;
     }
+    public function getUserID(){
+        session_start();      
+        $userLoggedIn = unserialize($_SESSION["username"]);
+        $userID = $this->db->collectFromDatabase("SELECT `userID` FROM `user` WHERE `email` = '$userLoggedIn';");
+        $userID = $userID[0]->userID;
+        return $userID;
+    }
 }

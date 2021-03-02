@@ -86,7 +86,16 @@ signupButton.addEventListener("click", async () =>{
         body.append("newUser", JSON.stringify(newUser))
     
         let result = await makeRequest("./api/recievers/signupReciever.php", "POST", body)
-        emptyInput()
+        if(result.length == 0){
+            alert("Ditt konto är nu skapat! tryck ok för att fortsätta till inloggning!")
+            location.replace("./api/handlers/login.php")
+            
+        }else{
+            let messageDiv = document.getElementById("message")
+            messageDiv.innerText = result
+            emptyInput()
+
+        }
     }else{
         alert("Not a valid email!");
     }

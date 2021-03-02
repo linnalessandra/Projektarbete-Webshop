@@ -22,7 +22,7 @@ class User{
             $newUser['password'] = password_hash($newUser['password'], PASSWORD_DEFAULT);
             return $db->editDatabase("INSERT INTO user (userID, email, password, name, age, country, city, postcode, address, isAdmin) VALUES (NULL, :email, :password, :name, :age, :country, :city, :postcode, :address, 'user');", $newUser);
         }else{
-            return "a user with this email already exists";
+            return "Det finns redan en användare med denna email..";
         }     
     }
     public function changeToAdmin($userID){

@@ -24,7 +24,7 @@ async function getUsersOrders(){
     let response = await makeRequest("./api/recievers/orderReciever.php", "POST", body)
     console.log(response)
     if(response.length == 0){
-        orderHolder.innerText = "No orders.."
+        orderHolder.innerText = "Du har inga tidigare beställningar..."
         return
     }
     for (let i = 0; i < response.length; i++) {

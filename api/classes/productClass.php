@@ -20,7 +20,8 @@ class Product{
         /* skicka in en lista med nyckeln product där ex id eller namn är medskickat! */
         $resultFromDb = $this->db->editDatabase("DELETE FROM `product` WHERE `productName` = :productName;", $productToRemove);
         return $resultFromDb;
-    }public function getProductById($inputID){
+    }
+    public function getProductById($inputID){
         $inputID = intval($inputID);
         $resultFromDb = $this->db->collectFromDatabase("SELECT * FROM `product` WHERE `productID` = $inputID;");
         return $resultFromDb;
@@ -31,7 +32,6 @@ class Product{
     }
     public function getProductByCategory($categoryID){
         $resultFromDb = $this->db->collectFromDatabase("SELECT productID FROM product_category_detail WHERE categoryID = '$categoryID';");
-        /* return $resultFromDb; */
         $length = count($resultFromDb);
         $arrayOfProducts = array();
         for ($i=0; $i < $length; $i++) { 
@@ -39,7 +39,6 @@ class Product{
             $newResultList = $this->db->collectFromDatabase("SELECT * FROM product WHERE productID = '$productID';");
             array_push($arrayOfProducts, $newResultList[0]);
         }
-        /* return $newResultList; */
         return $arrayOfProducts;  
     }
 }

@@ -84,8 +84,9 @@ try {
                      <label>Lösenord</label>  
                      <input style="margin: 5px;"  type="password" name="password"/>  
                      <br />  
-                     <input type="submit" name="login" value="Login" />  
+                     <input class="buttonStyle" type="submit" name="login" value="Login" />  
                 </form>  
+                <a style="margin-top: 10px;" href="../../signup.html">Vill du bli medlem?</a>
            </div>  
            <br />  
 

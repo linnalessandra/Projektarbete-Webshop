@@ -19,3 +19,12 @@
     justify-content: center;
     align-items: center;
 }
+.buttonStyle{
+    margin: 5px;
+    background-color: #2e3295;
+    border: none;
+    cursor: pointer;
+    color: white;
+    padding: 8px;
+    border-radius: 10px;
+}

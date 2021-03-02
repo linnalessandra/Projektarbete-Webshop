@@ -1,12 +1,12 @@
 <?php
-include_once("../repositories/signupRepository.php");
 include_once("../classes/newsletterClass.php");
+include_once("../classes/userClass.php");
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(isset($_POST["newUser"])){
-        /* tar emot det som ett objekt, omvandlar till array genom att lägga till true */
         $newUser = json_decode($_POST["newUser"], true);
-        echo json_encode(createUser($newUser));
+        $user = new User();
+        echo json_encode($user->createUser($newUser));
         exit;
     } if($_POST["endpoint"] == "newsletterEndpoint") {
         $promptEmail = json_decode($_POST["promptEmail"]);
@@ -22,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         session_start();
         if(isset($_SESSION["admin"])){
             if($_SESSION["admin"] == true){
-                echo json_encode("hej admin");
+                echo json_encode(true);
                 exit;
             }else{
                 echo json_encode(false);
@@ -41,6 +41,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             echo json_encode(false);
             exit;
         }
+    }if($_POST["endpoint"] == "getAllUsers") {
+        $user = new User();
+
+       echo json_encode($user->getAllUsers());
+       exit;
+    }if($_POST["endpoint"] == "changeToAdmin") {
+        $userID = json_decode($_POST["userID"]);
+        $user = new User();
+
+       echo json_encode($user->changeToAdmin($userID));
+       /* echo json_encode("hejASDMIN" . $userID); */
+       exit;
     }
 } else{
     echo json_encode("Not a valid request method..");

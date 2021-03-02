@@ -2,7 +2,6 @@ window.addEventListener("load", initiate)
 let saveButton = document.getElementById("saveBtn").addEventListener("click", saveNewProduct);
 let searchButton = document.getElementById("searchBtn").addEventListener("click", searchProduct);
 function initiate(){
-    getCustomersForNewsletter()
     getOrders()
     checkIfAdmin()
 }
@@ -119,36 +118,6 @@ async function deleteProduct(){
     let response = await makeRequest("./api/recievers/productReciever.php", "POST", data)
     console.log(response)
     startOver()
-}
-async function getCustomersForNewsletter(){
-    let divHolder = document.getElementById("listNewsletter")
-    let body = new FormData()
-    body.append("endpoint", "getNewsletterCustomers")
-    let response = await makeRequest("./api/recievers/signupReciever.php", "POST", body)
-    if(response.length == 0){
-        divHolder.innerText = "No signups.."
-        return
-    }
-    let table = document.createElement("table")
-    let rubrikerna = document.createElement("tr")
-    let headers = Object.keys(response[0])
-    headers = headers.slice(1, 3)
-    headers.forEach((header) =>{
-        let headerElement = document.createElement("th")
-        headerElement.innerText = header 
-        rubrikerna.appendChild(headerElement)
-    })
-    table.appendChild(rubrikerna)
-    response.forEach((signup) =>{
-        let signupRow = document.createElement("tr")
-        headers.forEach((header) =>{
-            let content = document.createElement("td")
-            content.innerText = signup[header]
-            signupRow.appendChild(content)
-        })
-        table.appendChild(signupRow)
-    })
-    divHolder.appendChild(table)
 }
 async function getOrders(){
     let orderHolder = document.getElementById("orders")

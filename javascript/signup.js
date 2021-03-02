@@ -86,7 +86,6 @@ signupButton.addEventListener("click", async () =>{
         body.append("newUser", JSON.stringify(newUser))
     
         let result = await makeRequest("./api/recievers/signupReciever.php", "POST", body)
-        console.log(result)
         emptyInput()
     }else{
         alert("Not a valid email!");

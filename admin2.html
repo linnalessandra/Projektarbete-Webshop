@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechAway</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./style/index.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="./style/admin.css">
+<script src="./javascript/admin2.js" defer></script>
+
+</head>
+
+
+<body>
+
+  <nav class="navigation-bar">
+    <div>
+        <a href="./index.html"> <img class="logo" src="./otherImages/startLogo.png"> </a>
+    </div>
+    <div class="hello">
+        <a id="logout" href="admin.html">Produkter / Ordrar</a> 
+        <a id="logout" href="./api/handlers/logout.php"><i class="fa fa-fw fa-user"></i> Logga ut</a> 
+     </div>
+  </nav>
+  <div class="mainContainer">
+    <div class="addProductWrapper">
+      <h2>Användare och nyhetsbrev</h2>
+      <div class="forTables">
+          <h3>Kunder som vill ha nyhetsbrev:</h3>
+          <div id="listNewsletter"></div>
+          
+      </div>
+        <h3>Användare:</h3>
+        <div id="users"></div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <footer class="contactFooter">
+    <div class="footerContainer">
+    </div>
+    <div class="infoFooter">
+      <img src="./otherImages/startLogo.png" alt="">
+    </div>
+  </footer>
+
+</body>
+</html>

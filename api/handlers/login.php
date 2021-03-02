@@ -16,7 +16,7 @@ try {
                     $passwordHash = $hashedPasswordArray[0]["password"];
                     
                     if (password_verify($_POST["password"], $passwordHash)) {
-                         $_SESSION["username"] = $_POST["username"];  
+                         $_SESSION["username"] = serialize($_POST["username"]);  
                          $query2 = "SELECT isAdmin FROM user WHERE email = :username";  
                          $answer = $db->editDatabase($query2, array('username'=>$_POST["username"]));
                          if($answer[0]["isAdmin"] == "admin"){

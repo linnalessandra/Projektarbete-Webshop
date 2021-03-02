@@ -137,3 +137,11 @@ p {
     object-fit: contain;
   
   }
+  .userOrderContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 70vh;
+    width: 100%;
+  }

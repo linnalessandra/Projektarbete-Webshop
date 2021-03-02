@@ -1,4 +1,34 @@
 
+@media screen and (max-width: 500px) {
+    .navigation-bar {
+      flex-wrap: wrap;
+      flex-direction: row;
+      background-color: rgba(48,50,112,255);
+      height: auto;
+    }
+  
+    body {
+        height: 100%;
+        width: 100%;
+    }
+
+    .hello {
+        background-color: rgba(48,50,112,255);
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .productCard {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+  }
+
 body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
@@ -7,7 +37,7 @@ body {
 
 .navigation-bar {
     width: 100%;  
-    height: 80px; 
+    height: auto; 
     background-color: rgba(48,50,112,255);
     display: flex;
     justify-content: space-between;
@@ -22,11 +52,12 @@ body {
 
 .hello > a {
     vertical-align: top;
-    margin-right: 20px;
     height: 80px;        
     line-height: 80px;    
     text-decoration: none;
     color: ghostwhite;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .cartTitle{
@@ -37,28 +68,28 @@ body {
     align-items: center;
   }
 
-  h2 {
-      margin-left: 20px;
-  }
-
-
 .imageHolder {
     height: 100px;
-    width: 100px;
-    }
-    
+    width: auto;
+}
+
 img {
     height: inherit;
     object-fit: contain;
     
 }
+
+#mainCartTitle {
+    margin-left: 20px;
+}
+
 #endButton{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 30px;
     margin-bottom: 50px;
-
+    
 }
 #endOrderButton{
     background-color: lightgreen;
@@ -67,4 +98,19 @@ img {
 }
 button:focus{
     outline: whitesmoke auto 1px;
+}
+
+#contactFooter {
+    background-color: #1e2063;
+    color: ghostwhite;
+    bottom: 0;
+    width: 100%;
+    height: auto;   
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footerContainer {
+    margin-left: 20px;
 }

@@ -31,19 +31,17 @@ async function ShowProductsInCart(chosedProducts) {
 
 
         let productCard = document.createElement("div")
+        productCard.classList.add("productCard")
         productCard.style.display = "flex"
-        productCard.style.justifyContent = "center"
-        productCard.style.flexDirection = "column"
-        productCard.style.padding = "20px"
+        productCard.style.justifyContent = "space-between"
+        productCard.style.padding = "8px"
+        productCard.style.backgroundColor = "whitesmoke"
+        productCard.style.margin = "10px"
+        productCard.style.alignItems = "center"
+        productCard.style.flexWrap = "wrap"
+        productCard.style.height = "auto"
+        productCard.style.width = "95%"
 
-
-
-
-
-        let productTitle = document.createElement("h2")
-        productTitle.innerText = product.product.productName;
-
-        productCard.appendChild(productTitle);
 
 
         let imageHolder = document.createElement("div")
@@ -52,13 +50,28 @@ async function ShowProductsInCart(chosedProducts) {
 
         productCard.appendChild(imageHolder);
 
+
+        let productTitle = document.createElement("h2")
+        productTitle.innerText = product.product.productName;
+        productTitle.style.fontSize = "18px"
+
+        productCard.appendChild(productTitle);
+
+
+
         let productPrice = document.createElement("h3")
         productPrice.innerText = product.product.productPrice + " kr" 
        
         productCard.appendChild(productPrice);
 
         let itemButton = document.createElement("button")
-        itemButton.style.width = "25px"
+        itemButton.style.width = "30px"
+        itemButton.style.backgroundColor = "whitesmoke"
+        itemButton.style.color = "darkgray"
+        itemButton.style.borderColor = "whitesmoke"
+        itemButton.style.padding = "0px"
+        itemButton.style.marginRight = "8px"
+        itemButton.style.border = "solid 2px"
         itemButton.dataset.productIndex = productIndex 
  
         itemButton.addEventListener("click", e => {
@@ -73,19 +86,41 @@ async function ShowProductsInCart(chosedProducts) {
 
         let itemIcon = document.createElement("i")
         itemIcon.classList.add("fas", "fa-trash-alt")
+        itemIcon.style.padding = "5px"
+
         itemButton.appendChild(itemIcon)
 
 
         let itemSpan = document.createElement("span")
-        itemSpan.textContent = "Ta Bort"
+
 
         itemButton.appendChild(itemSpan)
 
+        let quantityCount = document.createElement("div")
+        quantityCount.style.marginTop = "10px"
+        quantityCount.style.display = "flex"
+        quantityCount.style.justifyContent = "space-evenly"
+        productCard.appendChild(quantityCount)
+
+
+        
+
+
+        quantityCount.appendChild(itemButton)
+
+        let quantityItem = document.createElement("div")
+        quantityItem.innerText = "Antal: " + product.quantity;
+        quantityItem.style.display = "flex"
+        quantityItem.style.justifyContent = "center"
+        quantityItem.style.alignItems = "center"
+        quantityItem.style.marginLeft = "8px"
+        quantityItem.style.color = "gray"
+        
+        quantityCount.appendChild(quantityItem);
+
         container.appendChild(productCard);
         
-    }
-    
-    
+    } 
 }
 
 var currentShoppingcart=JSON.parse(localStorage.getItem("cart"))
@@ -94,6 +129,7 @@ function updateCartTotal(){
     let totalPrice = document.getElementById("totalPrice")
     totalPrice.style.display = "flex"
     totalPrice.style.justifyContent = "center"
+    totalPrice.style.marginTop = "20px"
 
 
     let price = 0
@@ -112,12 +148,20 @@ function updateCartTotal(){
 
 async function getShipping() {
     const result = await makeRequest("./api/recievers/orderReciever.php", "GET")
-  
 
+    let shippingTitle = document.createElement("h3")
+    shippingTitle.innerText = "Välj fraktmetod:"  
+    shippingTitle.style.fontSize = "25px"
+    
     let shippingHolder = document.getElementById("shipping")
     shippingHolder.style.display = "flex"
     shippingHolder.style.justifyContent = "center"
     shippingHolder.style.flexDirection = "column"
+    shippingHolder.style.alignItems = "center"
+    shippingHolder.style.marginTop = "30px"
+    
+    shippingHolder.appendChild(shippingTitle)
+
     let newButton = document.createElement("button")
     newButton.innerText = "TESTAR"
     newButton.addEventListener("click", endOrder)

@@ -1,3 +1,26 @@
+@media screen and (max-width: 500px) {
+    .navigation-bar {
+      flex-wrap: wrap;
+      flex-direction: row;
+      background-color: rgba(48,50,112,255);
+      height: auto;
+    }
+  
+    body {
+        height: 100%;
+        width: 100%;
+    }
+  
+    .hello {
+        background-color: rgba(48,50,112,255);
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+  }
+
 .mainContainer{
     display: flex;
     justify-content: center;

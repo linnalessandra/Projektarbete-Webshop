@@ -102,10 +102,6 @@ async function ShowProductsInCart(chosedProducts) {
         quantityCount.style.justifyContent = "space-evenly"
         productCard.appendChild(quantityCount)
 
-
-        
-
-
         quantityCount.appendChild(itemButton)
 
         let quantityItem = document.createElement("div")
@@ -163,7 +159,7 @@ async function getShipping() {
     shippingHolder.appendChild(shippingTitle)
 
     let newButton = document.createElement("button")
-    newButton.innerText = "TESTAR"
+    newButton.innerText = "Slutför din beställning"
     newButton.addEventListener("click", endOrder)
     newButton.id = "endOrderButton"
     let ButtonHolder = document.getElementById("endButton")
@@ -203,22 +199,51 @@ async function endOrder() {
 
     console.log("hejsan")
     if(postnord.checked && dhl.checked && brevduva.checked){
-        /* console.log(postnord.id) */
-        console.log("du måste välja ett alternativ")
+        let shipDiv = document.getElementById("shipOption")
+        shipDiv.innerText = "Välj ett fraktalternativ"
+        shipDiv.style.fontSize = "15px"
+        shipDiv.style.display = "flex"
+        shipDiv.style.justifyContent = "center"
+        shipDiv.style.marginBottom = "20px"
+        console.log("du måste välja ett frakt alternativ")
         return
     }else if(postnord.checked && dhl.checked){
-        console.log("du måste välja ett alternativ")
+        let shipDiv = document.getElementById("shipOption")
+        shipDiv.innerText = "Välj ett fraktalternativ"
+        shipDiv.style.fontSize = "15px"
+        shipDiv.style.display = "flex"
+        shipDiv.style.justifyContent = "center"
+        shipDiv.style.marginBottom = "20px"
+        console.log("du måste välja ett frakt alternativ")
         return
         
     }else if(dhl.checked && brevduva.checked){
-        console.log("du måste välja ett alternativ")
+        let shipDiv = document.getElementById("shipOption")
+        shipDiv.innerText = "Välj ett fraktalternativ"
+        shipDiv.style.fontSize = "15px"
+        shipDiv.style.display = "flex"
+        shipDiv.style.justifyContent = "center"
+        shipDiv.style.marginBottom = "20px"
+        console.log("du måste välja ett frakt alternativ")
         return
         
     }else if(postnord.checked && brevduva.checked){
-        console.log("du måste välja ett alternativ")
+        let shipDiv = document.getElementById("shipOption")
+        shipDiv.innerText = "Välj ett fraktalternativ"
+        shipDiv.style.fontSize = "15px"
+        shipDiv.style.display = "flex"
+        shipDiv.style.justifyContent = "center"
+        shipDiv.style.marginBottom = "20px"
+        console.log("du måste välja ett frakt alternativ")
         return
 
     }else if(!postnord.checked && !brevduva.checked && !dhl.checked){
+        let shipDiv = document.getElementById("shipOption")
+        shipDiv.innerText = "Välj ett fraktalternativ"
+        shipDiv.style.fontSize = "15px"
+        shipDiv.style.display = "flex"
+        shipDiv.style.justifyContent = "center"
+        shipDiv.style.marginBottom = "20px"
         console.log("du måste välja ett frakt alternativ")
         return
 
@@ -245,6 +270,8 @@ async function endOrder() {
     body.append("endpoint", "createOrder")
     let response = await makeRequest("./api/recievers/orderReciever.php", "POST", body)
     emptyCart()
+    let shipDiv = document.getElementById("shipOption")
+        shipDiv.innerText = " "
 }
 
 

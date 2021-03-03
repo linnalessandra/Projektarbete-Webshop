@@ -51,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $user = new User();
 
        echo json_encode($user->changeToAdmin($userID));
-       /* echo json_encode("hejASDMIN" . $userID); */
+       
        exit;
     }
 } else{

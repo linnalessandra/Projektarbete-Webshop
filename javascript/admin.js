@@ -125,7 +125,7 @@ async function getOrders(){
     body.append("endpoint", "getOrders")
     let response = await makeRequest("./api/recievers/orderReciever.php", "POST", body)
     if(response.length == 0){
-        orderHolder.innerText = "No orders.."
+        orderHolder.innerText = "Det finns inga ordrar.."
         return
     }
     let table = document.createElement("table")

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kundvagn</title>
-    <script defer src="./javascript/cart.js" ></script>
+    <script defer src="./javascript/cart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="./style/cart.css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -21,22 +21,17 @@
         </div>
         <div class="hello">
             <a href="./cart.html"><i class="fas fa-shopping-cart"></i> Kundvagn</a>
-            <a id="contact" href="#contactFooter"><i class="fa fa-fw fa-envelope"></i> Kontakt</a>
+            <a href="#contactFooter"><i class="fa fa-fw fa-envelope"></i> Kontakt</a>
             <a id="btnLogin" href="./api/handlers/login.php"><i class="fa fa-fw fa-user"></i> Logga in</a> 
          </div>
       </nav>
-
-      <div class="cartTitle">
-        <i class="fas fa-shopping-cart"></i>
-        <h2 id="mainCartTitle">Kundvagn</h2>
+      <div class="newsletterBox">
+        <h2>Tack!</h2>
+        <p>Tack för att du handlat hos oss på <a href="./index.html">TechAway</a>, din order behandlas just nu och det kommer snart dyka upp en orderbekräftelse i din mail.<br> Under tiden har vi en pågående kampanj där man har chansen att vinna ett presentkort till ett värde av 2000:-.<br> Börja med att prenumerera på vårt nyhetsbrev här nedan och sedan i nyhetsbrevet förklaras nästa steg för tävlingen, lycka till!</p>
+      </div>
+    <div id="newsletter">
+    <button onclick="newsletterPrompt()"><i class="fas fa-envelope-open-text"></i> Nyhetsbrev</button>
     </div>
-
-    <div id="cartProducts"></div>
-    <div id="totalPrice"></div>
-    <div id="shipping"></div>
-    <div id="endButton"></div>
-    <div id="shipOption"></div>
-
 
     <footer id="contactFooter">
         <div class="footerContainer">
@@ -45,6 +40,7 @@
           <p>Telefon: 031-337855</p>
         </div>
         <div class="infoFooter">
+          <img src="./otherImages/startLogo.png" alt="">
         </div>
       </footer>
     

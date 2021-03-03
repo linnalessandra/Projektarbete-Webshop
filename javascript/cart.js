@@ -271,8 +271,7 @@ async function endOrder() {
     let response = await makeRequest("./api/recievers/orderReciever.php", "POST", body)
     console.log(response)
     emptyCart()
-    let shipDiv = document.getElementById("shipOption")
-        shipDiv.innerText = " "
+    window.location.assign("http://localhost/Projektarbete-Webshop/newsletter.html");
 }
 
 
@@ -340,4 +339,74 @@ async function makeRequest(url, requestMethod, body) {
 } catch(err) {
     console.error(err)
     }
+}
+function checkIfValidEmail(promptEmail){
+    let format = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    if(promptEmail.match(format)){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+async function newsletterPrompt() {
+    var promptEmail = prompt("Skriv in din email:");
+    var promptName = prompt("Skriv in ditt namn:");
+
+    //ta en titt
+    let isEmailTrue = checkIfValidEmail(promptEmail)
+    if(!isEmailTrue){
+        alert("Not a valid email!");
+        return;
+    }  
+    
+    if (promptName == null || promptName == "") {
+        console.log("Avbrytet.");
+        alert("Du måste fylla i både namn och email för att kunna få nyhetsbrev.")
+    } else if (promptEmail == null || promptEmail == "") {
+        console.log("Avbrytet.");
+        alert("Du måste fylla i både namn och email för att kunna få nyhetsbrev.")
+    } else {
+        alert("Välkommen " + promptName + "! Ett brev skickas nu till din mail.")
+        console.log(promptEmail, promptName);
+
+        let body = new FormData() 
+        body.append("promptEmail", JSON.stringify(promptEmail));
+        body.append("promptName", JSON.stringify(promptName));
+        body.append("endpoint", "newsletterEndpoint");
+
+        let result = await makeRequest("./api/recievers/signupReciever.php", "POST", body);
+        console.log(result);
+        
+    
+    }
+  }
+async function checkIfLoggedIn(){
+    let body = new FormData()
+    body.append("endpoint", "checkLogin")
+    let result = await makeRequest("./api/recievers/signupReciever.php", "POST", body);
+    console.log(result);
+    if(result == true){
+        let btnLogin = document.getElementById("btnLogin")
+        btnLogin.innerText = "Logga ut";
+        btnLogin.href = "./api/handlers/logout.php"
+    }else{
+        return false
+    }
+}
+
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }

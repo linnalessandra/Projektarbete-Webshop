@@ -69,7 +69,7 @@ async function getCustomersForNewsletter(){
     body.append("endpoint", "getNewsletterCustomers")
     let response = await makeRequest("./api/recievers/signupReciever.php", "POST", body)
     if(response.length == 0){
-        divHolder.innerText = "No signups.."
+        divHolder.innerText = "Ingen har skrivit upp sig.."
         return
     }
     let table = document.createElement("table")

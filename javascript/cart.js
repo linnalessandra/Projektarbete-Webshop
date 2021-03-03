@@ -197,7 +197,7 @@ async function endOrder() {
     let dhl = document.getElementById("2")
     let brevduva = document.getElementById("3")
 
-    console.log("hejsan")
+  
     if(postnord.checked && dhl.checked && brevduva.checked){
         let shipDiv = document.getElementById("shipOption")
         shipDiv.innerText = "Välj ett fraktalternativ"
@@ -269,7 +269,6 @@ async function endOrder() {
     body.append("shippingMethod", JSON.stringify(shippingMethod))
     body.append("endpoint", "createOrder")
     let response = await makeRequest("./api/recievers/orderReciever.php", "POST", body)
-    console.log(response)
     emptyCart()
     window.location.assign("http://localhost/Projektarbete-Webshop/newsletter.html");
 }

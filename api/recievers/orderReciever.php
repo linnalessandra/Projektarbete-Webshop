@@ -29,18 +29,22 @@ try{
                 /* kör de olika funktionerna och sparar i olika variabler
                 det vi behöver när vi sparar en order i databasen, har döpt
                 variablerna efter kolumn-namnen */
-                
                 $orderDate = $order->orderDate();
                 
                 $totalPrice = $order->totalPrice($productInCart);
                 
                 $totalQuantity = $order->getQuantity($productInCart);
-
-
+                
+                
                 $updatingUnitsInStock = $order->updateUnitsInStock($productInCart);
 
-                echo json_encode($order->saveOrder($orderDate, $totalPrice, $totalQuantity, $shippingMethod, $userID));
-                exit; 
+                $orderID = $order->saveOrder($orderDate, $totalPrice, $totalQuantity, $shippingMethod, $userID);
+                $testar = $order->saveDetails($productInCart, $orderID);
+                echo json_encode($testar);
+                exit;
+
+                /* echo json_encode($order->saveOrder($orderDate, $totalPrice, $totalQuantity, $shippingMethod, $userID));
+                exit; */ 
             }if($_POST["endpoint"] == "getOrders"){
                 $order = new Order();
                 echo json_encode($order->getOrdersFromDb());

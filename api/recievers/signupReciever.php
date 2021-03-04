@@ -1,7 +1,6 @@
 <?php
 include_once("../classes/newsletterClass.php");
 include_once("../classes/userClass.php");
-
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(isset($_POST["newUser"])){
         $newUser = json_decode($_POST["newUser"], true);
@@ -43,15 +42,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }if($_POST["endpoint"] == "getAllUsers") {
         $user = new User();
-
        echo json_encode($user->getAllUsers());
        exit;
     }if($_POST["endpoint"] == "changeToAdmin") {
         $userID = json_decode($_POST["userID"]);
         $user = new User();
-
-       echo json_encode($user->changeToAdmin($userID));
-       
+       echo json_encode($user->changeToAdmin($userID));   
        exit;
     }
 } else{

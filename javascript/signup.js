@@ -6,11 +6,8 @@ let countryInput = document.getElementById("country")
 let cityInput = document.getElementById("city")
 let postcodeInput = document.getElementById("postcode")
 let addressInput = document.getElementById("address")
-
-
 let signupButton = document.getElementById("signupBtn")
 signupButton.addEventListener("click", async () =>{
-
     let newUser = {
         email: document.getElementById("email").value,
         password: document.getElementById("pwd").value,
@@ -20,7 +17,6 @@ signupButton.addEventListener("click", async () =>{
         city: document.getElementById("city").value,
         postcode: document.getElementById("postcode").value,
         address: document.getElementById("address").value,
-        /* currentPosition: "user" */
     }
     if(newUser.email == ""){
         alert("Please fill all the required fields")
@@ -41,8 +37,7 @@ signupButton.addEventListener("click", async () =>{
         nameInput.classList.add("warning")
         return
     }else if(newUser.name != ""){
-        nameInput.classList.remove("warning")
-        
+        nameInput.classList.remove("warning")   
     }
     if(newUser.age == ""){
         alert("Please fill all the required fields")
@@ -81,20 +76,16 @@ signupButton.addEventListener("click", async () =>{
     }
     let isEmailTrue = checkIfValidEmail(emailInput)
     if(isEmailTrue){
-        console.log(newUser)
         let body = new FormData()
         body.append("newUser", JSON.stringify(newUser))
-    
         let result = await makeRequest("./api/recievers/signupReciever.php", "POST", body)
         if(result.length == 0){
             alert("Ditt konto är nu skapat! tryck ok för att fortsätta till inloggning!")
-            location.replace("./api/handlers/login.php")
-            
+            location.replace("./api/handlers/login.php")       
         }else{
             let messageDiv = document.getElementById("message")
             messageDiv.innerText = result
             emptyInput()
-
         }
     }else{
         alert("Not a valid email!");
@@ -107,10 +98,7 @@ function checkIfValidEmail(emailInput){
     }else{
         return false;
     }
-
-
 }
-
 function emptyInput(){
     document.getElementById("email").value = "";
     document.getElementById("pwd").value = "";
@@ -121,9 +109,6 @@ function emptyInput(){
     document.getElementById("postcode").value = "";
     document.getElementById("address").value = "";
 }
-
-
-
 async function makeRequest(url, inputMethod, body){
     try{
         let response = await fetch(url, {method: inputMethod, body})

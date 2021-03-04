@@ -1,5 +1,4 @@
 <?php 
-
 class Newsletter{
     function __construct(){
         include_once("../handlers/databaseHandler.php");

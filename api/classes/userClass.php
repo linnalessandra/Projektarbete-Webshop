@@ -1,5 +1,4 @@
 <?php 
-
 class User{
     function __construct(){
         include_once("../handlers/databaseHandler.php");
@@ -10,7 +9,6 @@ class User{
         return $resultFromDatabase;
     }
     public function createUser($newUser){
-        /* hämtar ut "input" mailen */
         $inputEmail = $newUser['email'];
         $db = new Database();
         /* hämtar från databasen och kollar om någon email matchar  */

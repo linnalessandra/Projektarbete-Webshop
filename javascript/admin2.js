@@ -9,7 +9,6 @@ async function checkIfAdmin(){
     let body = new FormData()
     body.append("endpoint", "checkIfAdmin")
     let response = await makeRequest("./api/recievers/signupReciever.php", "POST", body)
-    console.log(response)
     if(response == false){
         location.replace("http://localhost/Projektarbete-Webshop/index.html");
     }
@@ -30,7 +29,6 @@ async function getAllUsers(){
         innerDiv.style.flexDirection = "column"
         innerDiv.style.justifyContent = "space-evenly"
         innerDiv.style.margin = "10px"
-        /* innerDiv.style.alignItems = "center" */
         innerDiv.style.border = "1px solid black"
         innerDiv.style.padding = "10px"
         let email = document.createElement("h3")
@@ -46,7 +44,6 @@ async function getAllUsers(){
                 body.append("endpoint", "changeToAdmin")
                 body.append("userID", JSON.stringify(user.userID))
                 let response = await makeRequest("./api/recievers/signupReciever.php", "POST", body)
-                console.log(response)
                 userHolder.innerHTML = " "
                 getAllUsers()
             })
@@ -59,9 +56,6 @@ async function getAllUsers(){
         }
         
     }
-}
-async function addAdmin(userID){
-    console.log("Gör om till admin" + userID)
 }
 async function getCustomersForNewsletter(){
     let divHolder = document.getElementById("listNewsletter")

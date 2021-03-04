@@ -20,8 +20,7 @@ class Order{
         $length = count($productsInCart);
         for ($i=0; $i < $length; $i++) { 
             $productPrice = intval($productsInCart[$i]["quantity"]);
-            array_push($totalQuantity, $productPrice);
-            
+            array_push($totalQuantity, $productPrice);    
         }
         return array_sum($totalQuantity);
     }
@@ -30,7 +29,6 @@ class Order{
         $prices = [];
         $length = count($productsInCart);
         for ($i=0; $i < $length; $i++) { 
-            /* return $productsInCart[$i]["product"]["productPrice"]; */
             $productPrice = intval($productsInCart[$i]["product"]["productPrice"]);
             array_push($prices, $productPrice);
         }
@@ -39,11 +37,7 @@ class Order{
     public function orderDate(){
         return date("Y-m-d") . " Klockan: " . date("h:i:sa");
     }
-    /*  OBS LÄGG IN $userMakingOrder sist och kommentera in rad 50*/
     public function saveOrder($orderDate, $totalPrice, $totalQuantity, $shippingID, $userID){
-    
-        /* OBS SKA KOMMENTERAS IN IGEN NEDAN!!! */
-        /* $userID = $userMakingOrder[0]->userID; */
         $entity = [];
         $result = $this->db->editDatabase("INSERT INTO `order` (`orderID`, `orderDate`, `totalPrice`, `totalQuantity`, `shippingID`, `userID`) VALUES (NULL, '$orderDate', '$totalPrice', '$totalQuantity', '$shippingID', '$userID');", $entity);
         $result2 = $this->db->collectFromDatabase("SELECT `orderID` FROM `order` WHERE `orderDate` = '$orderDate' AND `totalPrice` = '$totalPrice';");
@@ -58,7 +52,6 @@ class Order{
             $result = $this->db->editDatabase("INSERT INTO `order_product_detail` (`orderID`, `productID`) VALUES ('$orderID', '$productID');", $entity);
 
         }
-        /* return $productID; */
     }
     /* uppdaterar lagersaldot */
     public function updateUnitsInStock($productsInCart){

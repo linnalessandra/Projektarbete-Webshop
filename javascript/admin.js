@@ -6,11 +6,9 @@ function initiate(){
     checkIfAdmin()
 }
 async function checkIfAdmin(){
-    //Här vill vi kolla så att det är en admin annars kasta tillbaka till index.html, skapa header i php??
     let body = new FormData()
     body.append("endpoint", "checkIfAdmin")
     let response = await makeRequest("./api/recievers/signupReciever.php", "POST", body)
-    console.log(response)
     if(response == false){
         location.replace("http://localhost/Projektarbete-Webshop/index.html");
     }
@@ -26,12 +24,10 @@ async function saveNewProduct(){
         imageSrc: inputImage,
         productDescription: document.getElementById("productDescription").value
     }
-    console.log(newProduct)
     let body = new FormData()
     body.append("newProduct", JSON.stringify(newProduct))
     body.append("endpoint", "saveNewProduct")
     let response = await makeRequest("./api/recievers/productReciever.php", "POST", body)
-    console.log(response)
     saveImageInFolder()
     startOver()
 }
@@ -41,7 +37,6 @@ async function saveImageInFolder(){
     body.append("image", inputImage.files[0])
     body.append("endpoint", "saveimage")
     let response = await makeRequest("./api/recievers/productReciever.php", "POST", body)
-    console.log(response)
 }
 async function searchProduct(){
     let hideThis = document.getElementById("hide")
@@ -100,12 +95,10 @@ async function updateProduct(){
         unitsInStock: document.getElementById("inputUnitsInStock").value,
         productDescription: document.getElementById("inputDescription").value
     }
-    console.log(productToUpdate)
     let data = new FormData()
     data.append("productToUpdate", JSON.stringify(productToUpdate))
     data.append("endpoint", "updateProduct")
     let response = await makeRequest("./api/recievers/productReciever.php", "POST", data)
-    console.log(response)
     startOver()
 }
 async function deleteProduct(){
@@ -116,7 +109,6 @@ async function deleteProduct(){
     data.append("productToDelete", JSON.stringify(productToDelete))
     data.append("endpoint", "deleteProduct")
     let response = await makeRequest("./api/recievers/productReciever.php", "POST", data)
-    console.log(response)
     startOver()
 }
 async function getOrders(){

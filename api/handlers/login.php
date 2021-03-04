@@ -28,9 +28,7 @@ try {
                               header("location:loginSuccess.php");
                               exit;
                               
-                         }
-                         
-                         
+                         }           
                     } else {
                          $message = '<label>Antingen fel e-mail eller lösenord</label>';
                     }

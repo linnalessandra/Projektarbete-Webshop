@@ -12,7 +12,7 @@ Sara Oscarsson
 ### Kravspecifikation på projektet:
 
 ### Alla sidor skall vara responsiva. (G)
-Ja vi har anpassat alla sidor så att dom är responsiva.
+Ja vi har anpassat alla sidor så att dom är responsiva med media quieries .
 
 ### Arbetet ska implementeras med objektorienterade principer. (G)
 Ja vi har samlat alla våra funtioner (metoder) i klasser.

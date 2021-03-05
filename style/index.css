@@ -40,7 +40,6 @@ font-family: 'Montserrat', sans-serif;
 font-size: 16px;
 }
 
-/* Kategori-meny */
 .vertical-menu {
 width: 100%; 
 display: flex;
@@ -56,64 +55,52 @@ padding: 12px;
 text-decoration: none; 
 font-size: 20px;
 margin: 0px 0px 0px 50px;
+width: 70px;
 }
 .vertical-menu a:hover {
 background-color: rgba(255, 255, 255, 0.685);
 color: darkgray;
 width: 100px;
 }
-/* cards */
-.productList {
-  display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 100px;
-  margin-top: 50px;
-}
 
 .holder{
   width: 25%;
   margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
+  padding: 20px;
 }
 
-.card {
-  /* Add shadows to create the "card" effect */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  width: 200px;
-  height: auto;
-}
-/* Add some padding inside the card container */
-.container {
-  padding: 2px 16px;
-}
-.card img {
-    padding: 5px
-}
-/* Footer content */
 .contactFooter {
   background-color: #1e2063;
   color: ghostwhite;
   bottom: 0;
   width: 100%;
-  height: auto;   /* Height of the footer */
+  height: auto;   
   display: flex;
   justify-content: space-between;
 }
+
 .footerContainer {
   margin-left: 20px;
 }
+
 p {
-font-size: 12px;
+font-size: 15px;
 }
+
 .imageHolder {
-height: 100px;
-width: 140px;
+height: 150px;
 }
 
 img {
   height: inherit;
   object-fit: contain;
 }
+
 .startpage {
   background-image: url(../productImages/macBookAir13.jpg);
   background-repeat: no-repeat;
@@ -164,9 +151,50 @@ h1 {
     display: flex; 
     flex-direction: column;
   }
+
+  .infoFooter {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   .holder {
     width:50%;
     margin: 10px;
+    padding: 60px;
+  }
+
+  .hello {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0px;
+  }
+
+  .hello > a {
+    margin: 0;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    font-size: 20px;
+  }
+  
+  .hello > button {
+    margin: 0;
+    width: 50%;
+    font-size: 20px;
+  }
+
+  #datorer {
+    margin-bottom: 30px;
+  }
+
+  #logout {
+    width: auto;
+    height: 70px;
   }
 }
 .myButton {

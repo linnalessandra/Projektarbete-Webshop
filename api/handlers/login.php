@@ -89,7 +89,7 @@ try {
            <br />  
 
            
-      <footer class="contactFooter">
+      <footer id="contactFooter">
         <div class="footerContainer">
           <h2>Kontakta oss</h2>
           <p>Email: info@techaway.se</p>
@@ -99,5 +99,6 @@ try {
           <img src="./otherImages/startLogo.png" alt="">
         </div>
       </footer>
+
       </body>  
 </html>

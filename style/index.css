@@ -56,6 +56,7 @@ padding: 12px;
 text-decoration: none; 
 font-size: 20px;
 margin: 0px 0px 0px 50px;
+width: 70px;
 }
 .vertical-menu a:hover {
 background-color: rgba(255, 255, 255, 0.685);
@@ -73,6 +74,12 @@ width: 100px;
 .holder{
   width: 25%;
   margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: whitesmoke;
+  padding: 20px;
 }
 
 .card {
@@ -102,12 +109,16 @@ width: 100px;
 .footerContainer {
   margin-left: 20px;
 }
+
 p {
-font-size: 12px;
+font-size: 15px;
 }
+
 .imageHolder {
-height: 100px;
-width: 140px;
+height: 150px;
+width: 300px;
+display: flex;
+justify-content: center;
 }
 
 img {
@@ -167,5 +178,24 @@ h1 {
   .holder {
     width:50%;
     margin: 10px;
+    padding: 50px;
   }
+
+  .startpage > h1 {
+    padding: 20px;
+    margin: 0;
+  }
+
+  .hello {
+    padding: 10px;
+  }
+
+  .hello > a {
+    margin: 1px;
+  }
+
+  .hello > button {
+    margin: 1px;
+  }
+
 }

@@ -28,3 +28,16 @@
     padding: 8px;
     border-radius: 10px;
 }
+
+#contactFooter {
+    background-color: #1e2063;
+    color: ghostwhite;
+    width: 100%;
+    height: auto;   
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    bottom: 0; 
+    left: 0; 
+    right: 0;
+}

@@ -85,8 +85,8 @@ chansen att skriva upp sig på nyhetsbrevet.
 ### När besökare gör en beställning ska hen få ett lösenord till sidan där man kan logga in som kund. Det är ok att spara all kundinformation i användartabellen, ni behöver alltså inte ha en separat costumer tabell om inloggning finns. (VG)
 Nej detta har vi inte med.
 
-### När man är inloggad som kund ska man kunna se sina gjorda beställning och om det är skickade eller inte (VG)
-Som inloggad kund kan du se dina beställningar men vi har inte lagt till att de kan få status skickad.
+### När man är inloggad som kund ska man kunna se sina gjorda beställningar och om det är skickade eller inte (VG)
+Nej detta har vi inte med.
 
 ### Som inloggad kund ska man kunna markera sin beställning som mottagen (VG)
 Detta har vi inte med.

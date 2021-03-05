@@ -60,8 +60,7 @@ function showProducts(products){
     let productToCartButton = document.createElement("button")
     productToCartButton.innerText = "Lägg till i kundvagn"
     holder.append(title, imageHolder, productDescription, productPrice, productToCartButton)
-    holder.style.width = "25%"
-    holder.style.margin = "20px" 
+    holder.classList.add("holder");  
     productToCartButton.addEventListener("click",() => {
         let productToCart = {
             productID: product.productID, 

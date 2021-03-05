@@ -59,6 +59,7 @@ function showProducts(products){
     productPrice.innerText = product.productPrice + " kr" 
     let productToCartButton = document.createElement("button")
     productToCartButton.innerText = "Lägg till i kundvagn"
+    productToCartButton.classList.add("myButton");
     holder.append(title, imageHolder, productDescription, productPrice, productToCartButton)
     holder.classList.add("holder");  
     productToCartButton.addEventListener("click",() => {

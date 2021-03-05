@@ -9,6 +9,13 @@ Elin Nilsson
 Ossian Gren
 Sara Oscarsson
 
+### Länk till projektet på GitHub
+https://github.com/linnalessandra/Projektarbete-Webshop.git
+
+### Inloggningsuppgifter
+admin@admin.com
+admin
+
 ### Kravspecifikation på projektet:
 
 ### Alla sidor skall vara responsiva. (G)
